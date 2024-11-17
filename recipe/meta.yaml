@@ -1,13 +1,13 @@
 {% set name = "PyFunctional" %}
-{% set version = "1.4.3" %}
+{% set version = "1.5.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 11c313fe251b269c6506689135456a05bc5a6fa129c9d02b445f383d4f411e10
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name|lower }}-{{ version }}.tar.gz
+  sha256: e184f3d7167e5822b227c95292c3557cf59edf258b1f06a08c8e82991de98769
 
 build:
   number: 0
