@@ -16,16 +16,18 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
     - poetry
+    - setuptools
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - dill >=0.2.5
     - tabulate <=1.0.0
 
 test:
   requires:
+    - python {{ python_min }}
     - pip
   commands:
     - pip check
