@@ -1,0 +1,52 @@
+schema_version: 1
+
+context:
+  name: PyFunctional
+  version: "1.5.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name|lower }}-${{ version }}.tar.gz
+  sha256: e184f3d7167e5822b227c95292c3557cf59edf258b1f06a08c8e82991de98769
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - poetry
+    - setuptools
+  run:
+    - python >=${{ python_min }}
+    - dill >=0.2.5
+    - tabulate <=1.0.0
+
+tests:
+  - python:
+      imports:
+        - functional
+      pip_check: true
+      python_version:
+        - ${{ python_min }}
+        - "*"
+
+about:
+  license: MIT
+  license_file: LICENSE.txt
+  summary: Python library for creating data pipelines with chain functional programming
+  description: |
+    Python library for creating data pipelines with chain functional programming
+
+
+  homepage: https://github.com/EntilZha/PyFunctional
+
+extra:
+  recipe-maintainers:
+    - timkpaine
